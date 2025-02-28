@@ -15,27 +15,30 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             overflow: hidden;
+            padding: 10px;
         }
         .container {
             position: relative;
+            max-width: 90%;
         }
         .image-container {
             display: none;
             margin-bottom: 10px;
         }
         .image-container img {
-            width: 200px;
+            width: 100%;
+            max-width: 250px;
             height: auto;
             border-radius: 10px;
         }
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
         }
         .heart {
             color: #ff007f;
-            font-size: 50px;
+            font-size: 40px;
             animation: heartbeat 1s infinite alternate;
             display: block;
             text-align: center;
@@ -49,58 +52,38 @@
                 transform: scale(1.2);
             }
         }
-        .balloons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        .balloon {
-            position: absolute;
-            bottom: -50px;
-            animation: floatUp 5s linear infinite;
-        }
-        @keyframes floatUp {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
         .question {
             margin-top: 20px;
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #fff;
         }
         .buttons {
-            margin-top: 30px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .buttons button {
-            width: 120px;
-            height: 50px;
+            width: 100px;
+            height: 45px;
             border: 2px solid #ff007f;
             background-color: white;
             color: #ff007f;
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: bold;
             cursor: pointer;
             text-align: center;
             transition: 0.3s;
-            border-radius: 25px;
+            border-radius: 20px;
         }
         .buttons button:hover {
             background-color: #ff007f;
             color: white;
         }
         .message {
-            margin-top: 20px;
-            font-size: 1.2em;
+            margin-top: 15px;
+            font-size: 1em;
             color: #fff;
             font-weight: bold;
             display: none;
@@ -114,7 +97,6 @@
         </div>
         <h1>Happy Birthday Love</h1>
         <span class="heart">❤️</span>
-        <div class="balloons"></div>
         <div class="question">Do you love me?</div>
         <div class="buttons">
             <button class="yes" onclick="showMessage('yes')">Yes</button>
@@ -124,20 +106,6 @@
     </div>
     
     <script>
-        function createBalloon() {
-            const balloon = document.createElement("div");
-            balloon.classList.add("balloon");
-            balloon.style.left = Math.random() * 100 + "vw";
-            balloon.style.animationDuration = Math.random() * 3 + 3 + "s";
-            balloon.textContent = "🎈";
-            document.querySelector(".balloons").appendChild(balloon);
-            
-            setTimeout(() => {
-                balloon.remove();
-            }, 5000);
-        }
-        setInterval(createBalloon, 500);
-        
         function showMessage(answer) {
             const message = document.getElementById("responseMessage");
             const imageContainer = document.getElementById("responseImage");
